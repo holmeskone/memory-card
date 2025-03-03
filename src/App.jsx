@@ -1,33 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+import Card from './components/Card'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [score, setScore] = useState(0)
+  const [bestScore, setBestScore] = useState(0)
+  const [clicked, setClicked] = useState([{id: 1, selected: false}, {id: 2, selected: false}, {id: 3, selected: false}, {id: 4, selected: false}])
+
+  console.log(clicked)
+  console.log("the score is ",score)
+  console.log("the best score is ", bestScore)
+
+useEffect(() => {
+  if (score > bestScore) {
+    setBestScore(score);
+  }
+}, [score])
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="card-container">
+        <Card title="Vite" description="Next generation frontend tooling" count={count} setCount={setCount} setClicked={setClicked} clicked={clicked} id="1" score={score} setScore={setScore} />
+        <Card title="React" description="A JavaScript library for building user interfaces"count={count} setCount={setCount} setClicked={setClicked} clicked={clicked} id="2" score={score} setScore={setScore} />
+        <Card title="Vite + React" description="Blazing fast frontend development"count={count} setCount={setCount} setClicked={setClicked} clicked={clicked} id="3" score={score} setScore={setScore}/>
+        <Card title="Someting Else" description="Title and something"count={count} setCount={setCount} setClicked={setClicked} clicked={clicked} id="4" score={score} setScore={setScore}/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
