@@ -45,10 +45,6 @@ if (score > bestScore) {
       </div>
       <div className="card-container">
         <DisplayCharacter characters={characters} clicked={clicked} setClicked={setClicked} score={score} setScore={setScore}/>
-        {/* <Card title="Vite" description="Next generation frontend tooling" count={count} setCount={setCount} setClicked={setClicked} clicked={clicked} id="1" score={score} setScore={setScore} characters={characters} setCharacters={setCharacters}/>
-        <Card title="React" description="A JavaScript library for building user interfaces"count={count} setCount={setCount} setClicked={setClicked} clicked={clicked} id="2" score={score} setScore={setScore} />
-        <Card title="Vite + React" description="Blazing fast frontend development"count={count} setCount={setCount} setClicked={setClicked} clicked={clicked} id="3" score={score} setScore={setScore}/>
-        <Card title="Someting Else" description="Title and something"count={count} setCount={setCount} setClicked={setClicked} clicked={clicked} id="4" score={score} setScore={setScore}/> */}
       </div>
     </>
   )
