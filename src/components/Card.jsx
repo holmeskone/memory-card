@@ -1,32 +1,29 @@
-const Card = (prop) => {
-
+const Card = ({character,clicked,setClicked, score, setScore }) => {
     const addId = () => {
-        prop.setCount(prop.count+1)
-        let index = prop.clicked.indexOf(prop.clicked.find((item) => item.id == prop.id))
-        let newClicked = [...prop.clicked]
+        let index = clicked.indexOf(clicked.find((item) => item.id == character._id))
+        let newClicked = [...clicked]
+        console.log('This is new Clicked', newClicked)
         if (newClicked[index].selected === false) {
             newClicked[index].selected = true
-            prop.setScore(prop.score + 1)
+            setScore(score + 1)
         }
+
         else {
-            prop.setScore(0)
+            setScore(0)
             for (let i = 0; i < newClicked.length; i++) {
                 newClicked[i].selected = false
             }
         }
         // newClicked[index].clicked = true
-        prop.setClicked(newClicked)
+        setClicked(newClicked)
     }
-
     return (
-        <div className="card">
-            <h2>{prop.title}</h2>
-            <p>{prop.description}</p>
-            <button id={prop.id} 
-            onClick={() => addId()}>Click Me!</button>
+        <div className="card" key={
+            character._id}>
+        <h1>{character.name}</h1>
+        <img onClick={() => addId()} src={character.imageUrl} alt={character.name} id={character._id}/>
         </div>
     )
 }
 
 export default Card;
-
